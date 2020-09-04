@@ -1,4 +1,7 @@
 # IT-202
 ## Pierce Sukhram
 git commit -m "my first file"
-hi
+
+i hope this works
+
+please
