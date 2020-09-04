@@ -1,0 +1,5 @@
+test.* will ignore all files called test with any file extension
+*test will ignore all files that end with test
+test* will ignore all files that begin with test
+*test* will ignore all files that contain the word test
+*.log will ignore all log files regardless of name
