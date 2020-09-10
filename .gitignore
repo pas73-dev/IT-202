@@ -1,5 +1,2 @@
-myprivatecreds.* will ignore all files called test with any file extension
-*myprivatecreds will ignore all files that end with test
-myprivatecreds* will ignore all files that begin with test
-*myprivatecreds* will ignore all files that contain the word test
-*.log will ignore all log files regardless of name
+myprivatecreds.*
+*.log
