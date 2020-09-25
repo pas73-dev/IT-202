@@ -27,7 +27,7 @@ if(isset($_POST["login"])){
     echo "<br>Invalid email<br>";
   }
   if($isValid){
-    $password_hash_from_db = '';//placeholder, you can copy/paste a hash generated from sample_reg.php if you want to test it
+    $password_hash_from_db = '';
 
     if(password_verify($password, $password_hash_from_db)){
      echo "<br>Welcome! You're logged in!<br>"; 
