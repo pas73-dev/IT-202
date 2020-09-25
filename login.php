@@ -1,4 +1,4 @@
-<p>Run me in the browser from your server to try</p>
+<p>For the email it has to be formated like this example@gmail.com</p>
 <form method="POST">
   <label for="email">Email:</label>
   <input type="email" id="email" name="email" required/>
