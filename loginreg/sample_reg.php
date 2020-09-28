@@ -1,4 +1,4 @@
-<p>Register</p>
+<p>Club Penguin Register</p>
 <form method="POST">
   <label for="email">Email:</label>
   <input type="email" id="email" name="email" required/>
