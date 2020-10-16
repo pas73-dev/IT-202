@@ -6,10 +6,11 @@ body {
 
 ul[class="nav"]{
     list-style-type: none;
+    width: 95%;
     margin: 0;
     padding: 0;
     overflow: hidden;
-    background-color: #026e02;
+    background-color: darkred;
 }
 
 .nav > li {
@@ -29,7 +30,7 @@ ul[class="nav"]{
 }
 
 input, select {
-    width: 100%;
+    width: 90%;
     padding: 12px 20px;
     margin: 8px 0;
     display: inline-block;
@@ -39,10 +40,10 @@ input, select {
 }
 
 input[type=submit] {
-    width: 100%;
-    background-color: #026e02;
+    width: 95%;
+    background-color: darkred;
     color: white;
-    padding: 14px 20px;
+    padding: 15px 20px;
     margin: 8px 0;
     border: none;
     border-radius: 4px;
