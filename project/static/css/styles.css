@@ -51,26 +51,26 @@ input[type=submit] {
 }
 
 input:nth-of-type(1) {
-    margin-left: 5px !important;
-    margin-right: 5px !important;
+    margin-left: 10px !important;
+    margin-right: 10px !important;
 }
 
 input:nth-of-type(2) {
-    margin-left: 5px !important;
-    margin-right: 5px !important;
+    margin-left: 10px !important;
+    margin-right: 10px !important;
 }
 
 input:nth-of-type(3) {
-    margin-left: 5px !important;
-    margin-right: 5px !important;
+    margin-left: 10px !important;
+    margin-right: 10px !important;
 }
 
 input:nth-of-type(4) {
-    margin-left: 5px !important;
-    margin-right: 5px !important;
+    margin-left: 10px !important;
+    margin-right: 10px !important;
 }
 
 input:nth-of-type(5) {
-    margin-left: 25px !important;
-    margin-right: 25px !important;
+    margin-left: 10px !important;
+    margin-right: 10px !important;
 }
