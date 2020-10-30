@@ -65,6 +65,31 @@ function resetBall() {
         ball.sY *= -1;
     }
 }
+//ball spawn
+var ballsToSpawn = 2;
+for(let i = 0; i < ballsToSpawn; i++){
+	
+	setTimeout(function(){
+		let ball = makeRect(0, 0, ballLength, ballLength, ballSpeed, '#000000');
+		balls.push(ball);
+		ball.sX = ballSpeed;
+		ball.sY = ballSpeed/2;
+		randomDir(ball);
+	}, 500 * i);
+	
+}
+function randomDir(ball){
+	// Randomize initial direction
+	if (Math.random() > 0.5) {
+	  ball.sX *= -1;
+	  console.log("Invert X");
+	}
+	// Randomize initial direction
+	if (Math.random() > 0.5) {
+	  ball.sY *= -1;
+	  console.log("Invert y");
+	}
+}
 // Bounce the ball off of a paddle
 function bounceBall() {
     // Increase and reverse the X speed
@@ -85,8 +110,8 @@ function bounceBall() {
             ball.sY += 1
         }
     }
-    leftPaddle.height *= 1.2;
-    rightPaddle.height *= 0.2;
+    leftPaddle.height *= 2;
+    rightPaddle.height *= 1.5;
     ball.sX *= -1;
 }
 function attachKeyListeners() {
