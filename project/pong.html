@@ -72,17 +72,17 @@ function bounceBall() {
         ball.sX += 1;
         // Add some "spin"
         if (keys.UP) {
-            ball.sY -= 1;
-        } else if (keys.DOWN) {
             ball.sY += 1;
+        } else if (keys.DOWN) {
+            ball.sY -= 1;
         }
     } else {
         ball.sX -= 1;
         // Add some "spin"
         if (keys.W) {
-            ball.sY -= 1;
+            ball.sY += 1;
         } else if (keys.S) {
-            ball.sY += 1
+            ball.sY -= 1
         }
     }
     leftPaddle.height *= 2;
