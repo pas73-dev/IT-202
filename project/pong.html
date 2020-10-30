@@ -85,8 +85,8 @@ function bounceBall() {
             ball.sY += 1
         }
     }
-    leftPaddle.height += 1.2;
-    rightPaddle.height -= 0.2;
+    leftPaddle.height *= 1.2;
+    rightPaddle.height *= 0.2;
     ball.sX *= -1;
 }
 function attachKeyListeners() {
@@ -245,7 +245,7 @@ function gameLoop() {
 
 		</canvas>
 		<audio controls>
-			<source src="/project/PK.mp3" type="audio/mpeg">
+			<source src="/repo/project/PK.mp3" type="audio/mpeg">
 		</audio>
 	</main>
 </body>
