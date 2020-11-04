@@ -9,7 +9,7 @@ if (!has_role("Admin")) {
 
 <form method="POST">
 	<label>Score</label>
-	<input type="number" min="1" name="Score"/>
+	<input type="number" min="1" name="score"/>
 	<input type="submit" name="save" value="Create"/>
 </form>
 
