@@ -46,7 +46,7 @@ $result = [];
 if(isset($id)){
 	$id = $_GET["id"];
 	$db = getDB();
-	$stmt = $db->prepare("SELECT * FROM score where id = :id");
+	$stmt = $db->prepare("SELECT * FROM Score where id = :id");
 	$r = $stmt->execute([":id"=>$id]);
 	$result = $stmt->fetch(PDO::FETCH_ASSOC);
 }
