@@ -21,7 +21,7 @@ if(isset($_POST["save"])){
 	$id = get_user_id();
 	$db = getDB();
 	if(isset($id)){
-		$stmt = $db->prepare("UPDATE score set score=:score, id=:id");
+		$stmt = $db->prepare("UPDATE Scores set score=:score, id=:id");
 		//$stmt = $db->prepare("INSERT INTO F20_Eggs (name, state, base_rate, mod_min, mod_max, next_stage_time, user_id) VALUES(:name, :state, :br, :min,:max,:nst,:user)");
 		$r = $stmt->execute([
 			":score"=>$score,
