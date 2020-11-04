@@ -45,7 +45,7 @@ $result = [];
 if(isset($id)){
 	$id = $_GET["id"];
 	$db = getDB();
-	$stmt = $db->prepare("SELECT * FROM Scores where id = :id");
+	$stmt = $db->prepare("SELECT * FROM Score where id = :id");
 	$r = $stmt->execute([":id"=>$id]);
 	$result = $stmt->fetch(PDO::FETCH_ASSOC);
 }
@@ -53,6 +53,10 @@ if(isset($id)){
 
 <form method="POST">
 	<label>Scores</label>
-	<input type="number" min="1" name="Scores" value="<?php echo $result["Score"];?>" />
+	<input type="number" min="1" name="score" value="<?php echo $result["score"];?>" />
 	<input type="submit" name="save" value="Update"/>
 </form>
+
+
+<?php require(__DIR__ . "/partials/flash.php");
+
