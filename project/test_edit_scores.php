@@ -54,7 +54,7 @@ if(isset($id)){
 
 <form method="POST">
 	<label>Scores</label>
-	<input type="number" min="1" name="scores" value="<?php echo $result["score"];?>" />
+	<input type="number" min="1" name="score" value="<?php echo $result["score"];?>" />
 	<input type="submit" name="save" value="Update"/>
 </form>
 
