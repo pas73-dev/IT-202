@@ -17,7 +17,7 @@ if(isset($_GET["id"])){
 if(isset($_POST["save"])){
 	//TODO add proper validation/checks
 	$score = $_POST["score"];
-	$user = get_user_id();
+	$id = get_user_id();
 	$db = getDB();
 	if(isset($id)){
 		$stmt = $db->prepare("UPDATE Scores set score=:score, id=:id");
