@@ -14,7 +14,7 @@ if (isset($_POST["query"])) {
 }
 if (isset($_POST["search"]) && !empty($query)) {
     $db = getDB();
-    $stmt = $db->prepare("SELECT id, score, user_id from Scores WHERE score like :q LIMIT 10");
+    $stmt = $db->prepare("SELECT id, score, Users.username from Scores as incu JOIN Users on incu.user_id = Users.id LEFT JOIN Scores as score on incu.score = score WHERE score like :q LIMIT 10");
     $r = $stmt->execute([":q" => "%$query%"]);
     if ($r) {
         $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -26,7 +26,7 @@ if (isset($_POST["search"]) && !empty($query)) {
 ?>
 <form method="POST">
     <input name="query" placeholder="score" value="<?php safer_echo($query); ?>"/>
-    <input type="submit" value="score" name="score"/>
+    <input type="submit" value="score" name="submit"/>
 </form>
 <div class="results">
     <?php if (count($results) > 0): ?>
