@@ -39,7 +39,7 @@ if (isset($_POST["search"]) && !empty($query)) {
                     </div>
                     <div>
                         <div>Owner Id:</div>
-                        <div><?php safer_echo($r["user_id"]); ?></div>
+                        <div><?php safer_echo($r["username"]); ?></div>
                     </div>
                     <div>
                         <a type="button" href="test_edit_scores.php?id=<?php safer_echo($r['id']); ?>">Edit</a>
