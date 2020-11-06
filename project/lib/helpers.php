@@ -69,4 +69,9 @@ function getMessages() {
 }
 
 //end flash
+function getScore($n) {
+    echo score;
+}
+
 ?>
+
