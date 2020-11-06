@@ -20,7 +20,7 @@ if (isset($_POST["search"]) && !empty($query)) {
         $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
     else {
-        flash("There was a problem fetching the results");
+        flash("There was a problem fetching the results" .var_export($stmt->errorInfo(), true));
     }
 }
 ?>
