@@ -1,3 +1,4 @@
+<?php require_once(__DIR__ . "/partials/nav.php"); ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -250,3 +251,4 @@ function gameLoop() {
 	</main>
 </body>
 </html>
+<?php require(__DIR__ . "/partials/flash.php");
