@@ -240,6 +240,19 @@ function gameLoop() {
 }
 </script>
 </head>
+<script>
+function loadDoc() {
+  var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      document.getElementById("demo").innerHTML = this.responseText;
+    }
+  };
+  xhttp.open("leftScore", "pong.php", true);
+  xhttp.send();
+}
+</script>
+
 <body onload="init();">
 	<main>
 		<canvas id="board" width="600px" height="600px" style="border: 1px solid black;">
