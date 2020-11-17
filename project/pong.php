@@ -248,8 +248,9 @@ function loadScore() {
       document.getElementById("demo").innerHTML = this.responseText;
     }
   };
-  xhttp.open("leftScore", "pong.php", true);
-  xhttp.send();
+  xhttp.open("POST", "pong.php", true);
+  xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+  xhttp.send("leftScore=25");
 }
 </script>
 
