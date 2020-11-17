@@ -240,8 +240,9 @@ function gameLoop() {
 }
 </script>
 </head>
+<button type="button" onclick="saveScore()">Submit Score</button>
 <script>
-function loadScore() {
+function saveScore() {
   var xhttp = new XMLHttpRequest();
   xhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
