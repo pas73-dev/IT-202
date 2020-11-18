@@ -202,6 +202,9 @@ function checkScore() {
     // Score if the ball goes past a paddle
     if (ball.x < leftPaddle.x) {
         rightScore++;
+	if (rightScore == 5){
+		saveScore();
+	}
         resetBall();
         ball.sX *= -1;
     } else if (ball.x + ball.w > rightPaddle.x + rightPaddle.w) {
@@ -240,7 +243,6 @@ function gameLoop() {
 }
 </script>
 </head>
-<button type="button" onclick="saveScore()">Submit Score</button>
 <?php
 if(isset($_POST["save"])){
 	$score = $_POST["leftScore"];
@@ -263,7 +265,7 @@ function saveScore() {
   };
   xhttp.open("POST", "pong.php", true);
   xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-  xhttp.send();
+  xhttp.send(leftScore);
 }
 </script>
 
