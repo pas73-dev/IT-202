@@ -1,7 +1,7 @@
 <?php require_once(__DIR__ . "/partials/nav.php"); ?>
 <?php
 if(isset($_POST["saveScore"])){
-	$score = $_POST["leftScore"];
+	$score = $_POST["score"];
 	$user = get_user_id();
 	$db = getDB();
 	$stmt = $db->prepare("INSERT INTO Scores (score, user_id) VALUES(:leftScore, :user)");
