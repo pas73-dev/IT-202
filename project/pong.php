@@ -243,7 +243,6 @@ function gameLoop() {
 <button type="button" onclick="saveScore()">Submit Score</button>
 <?php
 if(isset($_POST["save"])){
-	//TODO add proper validation/checks
 	$score = $_POST["leftScore"];
 	$user = get_user_id();
 	$db = getDB();
