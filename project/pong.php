@@ -244,7 +244,7 @@ function gameLoop() {
 <?php
 if(isset($_POST["save"])){
 	//TODO add proper validation/checks
-	$score = $_POST["score"];
+	$score = $_POST["leftScore"];
 	$user = get_user_id();
 	$db = getDB();
 	$stmt = $db->prepare("INSERT INTO Scores (score, user_id) VALUES(:score, :user)");
