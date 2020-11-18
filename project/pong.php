@@ -247,9 +247,9 @@ if(isset($_POST["save"])){
 	$score = $_POST["leftScore"];
 	$user = get_user_id();
 	$db = getDB();
-	$stmt = $db->prepare("INSERT INTO Scores (score, user_id) VALUES(:score, :user)");
+	$stmt = $db->prepare("INSERT INTO Scores (score, user_id) VALUES(:leftScore, :user)");
 	$r = $stmt->execute([
-		":score"=>$score,
+		":leftScore"=>$score,
 		":user"=>$user
 	]);
 }
