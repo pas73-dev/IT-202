@@ -263,7 +263,7 @@ function saveScore() {
   };
   xhttp.open("POST", "pong.php", true);
   xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-  xhttp.send("leftScore=25");
+  xhttp.send();
 }
 </script>
 
