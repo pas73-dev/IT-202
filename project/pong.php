@@ -241,6 +241,19 @@ function gameLoop() {
 </script>
 </head>
 <button type="button" onclick="saveScore()">Submit Score</button>
+<?php
+if(isset($_POST["save"])){
+	//TODO add proper validation/checks
+	$score = $_POST["score"];
+	$user = get_user_id();
+	$db = getDB();
+	$stmt = $db->prepare("INSERT INTO Scores (score, user_id) VALUES(:score, :user)");
+	$r = $stmt->execute([
+		":score"=>$score,
+		":user"=>$user
+	]);
+}
+?>
 <script>
 function saveScore() {
   var xhttp = new XMLHttpRequest();
