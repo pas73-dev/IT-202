@@ -1,6 +1,6 @@
 <?php require_once(__DIR__ . "/partials/nav.php"); ?>
 <?php
-if(isset($_POST["save"])){
+if(isset($_POST["saveScore"])){
 	$score = $_POST["leftScore"];
 	$user = get_user_id();
 	$db = getDB();
