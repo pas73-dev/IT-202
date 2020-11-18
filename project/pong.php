@@ -1,4 +1,16 @@
 <?php require_once(__DIR__ . "/partials/nav.php"); ?>
+<?php
+if(isset($_POST["save"])){
+	$score = $_POST["leftScore"];
+	$user = get_user_id();
+	$db = getDB();
+	$stmt = $db->prepare("INSERT INTO Scores (score, user_id) VALUES(:leftScore, :user)");
+	$r = $stmt->execute([
+		":leftScore"=>$score,
+		":user"=>$user
+	]);
+}
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -243,18 +255,6 @@ function gameLoop() {
 }
 </script>
 </head>
-<?php
-if(isset($_POST["save"])){
-	$score = $_POST["leftScore"];
-	$user = get_user_id();
-	$db = getDB();
-	$stmt = $db->prepare("INSERT INTO Scores (score, user_id) VALUES(:leftScore, :user)");
-	$r = $stmt->execute([
-		":leftScore"=>$score,
-		":user"=>$user
-	]);
-}
-?>
 <script>
 function saveScore() {
   var xhttp = new XMLHttpRequest();
