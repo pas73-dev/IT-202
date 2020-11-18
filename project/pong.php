@@ -9,6 +9,7 @@ if(isset($_POST["saveScore"])){
 		":leftScore"=>$score,
 		":user"=>$user
 	]);
+	die();
 }
 ?>
 <!DOCTYPE html>
@@ -260,12 +261,12 @@ function saveScore() {
   var xhttp = new XMLHttpRequest();
   xhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
-      document.getElementById("demo").innerHTML = this.responseText;
+      alter(this.responseText);
     }
   };
   xhttp.open("POST", "pong.php", true);
   xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-  xhttp.send(leftScore);
+  xhttp.send("saveScore=true&score=" + leftScore);
 }
 </script>
 
