@@ -254,6 +254,9 @@ function gameLoop() {
         drawables[i].draw();
     }
 }
+function die() {
+	window.location.replace("https://web.njit.edu/~pas73/IT-202/project/home.php");
+}
 </script>
 </head>
 <script>
