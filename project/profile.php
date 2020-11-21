@@ -116,7 +116,7 @@ if (isset($_POST["query"])) {
     $query = $_POST["query"];
     $db = getDB();
     $stmt = $db->prepare("SELECT Scores.score FROM Users JOIN Scores on Users.id = Scores.user_id = :q LIMIT 10");
-    $r = $stmt->execute([$_SESSION["Score.user_id"] => "%$query%"]);
+    $r = $stmt->execute(["Score.user_id" => "%$query%"]);
     if ($r) {
         $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
