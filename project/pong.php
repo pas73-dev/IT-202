@@ -9,7 +9,6 @@ if(isset($_POST["saveScore"])){
 		":leftScore"=>$score,
 		":user"=>$user
 	]);
-	die();
 }
 ?>
 <!DOCTYPE html>
@@ -217,6 +216,7 @@ function checkScore() {
         rightScore++;
 	if (rightScore == 5){
 		saveScore();
+		die();
 	}
         resetBall();
         ball.sX *= -1;
