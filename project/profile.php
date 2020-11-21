@@ -115,10 +115,12 @@ $results = [];
 if (isset($_POST["query"])) {
     $query = $_POST["query"];
     $db = getDB();
-    $stmt = $db->prepare("SELECT top 10 Scores.score FROM Users JOIN Scores on Users.id = Scores.user_id where Users.id = :q order by created desc");
-    $r = $stmt->execute([":q" => "%$query%"]);
+    $stmt = $db->prepare("SELECT Scores.score FROM Users JOIN Scores on Users.id = Scores.user_id where Users.id = :sid order by created desc LIMIT 10");
+    $stmt->execute([":sid" => get_user_id()]);
+    $r = $stmt->fetch(PDO::FETCH_ASSOC);
     if ($r) {
-        $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
+	$Scores.score = $r["score"];
+	$_SESSION["score"] = $Scores.score;
     }
 }
 ?>
