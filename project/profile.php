@@ -109,7 +109,7 @@ if (isset($_POST["saved"])) {
 <?php
 //this gets score from database
 //$query = "";
-$score = "";
+$score = [];
 $results = [];
 //if (isset($_POST["query"])) {
    // $query = $_POST["query"];
@@ -126,7 +126,7 @@ $results = [];
             <?php foreach ($results as $r): ?>
                 <div class="list-group-item">
                     <div>
-                        <div>Score:</div>
+                        <div>Score History:</div>
                         <div><?php safer_echo($r["score"]); ?></div>
                     </div>
                 </div>
