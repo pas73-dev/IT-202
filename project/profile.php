@@ -116,6 +116,7 @@ if (isset($_POST["query"])) {
     $stmt = $db->prepare("SELECT Scores.created, Scores.score as sScore FROM Users JOIN Scores on Users.id = Scores.user_id where Users.id = :sid order by Scores.created desc LIMIT 10");
     $stmt->execute([":sid" => get_user_id()]);
     $results = $stmt->fetch(PDO::FETCH_ASSOC);
+    $_SESSION["score"] = $sScore;
 }
 ?>
 <div class="results">
