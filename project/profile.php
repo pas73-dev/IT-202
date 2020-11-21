@@ -105,8 +105,6 @@ if (isset($_POST["saved"])) {
         //else for $isValid, though don't need to put anything here since the specific failure will output the message
     }
 }
-
-
 ?>
 <?php
 //this gets score from database
@@ -117,9 +115,9 @@ if (isset($_POST["query"])) {
     $db = getDB();
     $stmt = $db->prepare("SELECT Scores.score as sScore FROM Users JOIN Scores on Users.id = Scores.user_id where Users.id = :sid order by created desc LIMIT 10");
     $stmt->execute([":sid" => get_user_id()]);
-    $r = $stmt->fetch(PDO::FETCH_ASSOC);
-    if ($r) {
-	$sScore = $r["score"];
+    $results = $stmt->fetch(PDO::FETCH_ASSOC);
+    if ($results) {
+	$sScore = $results["score"];
 	$_SESSION["score"] = $sScore;
     }
 }
