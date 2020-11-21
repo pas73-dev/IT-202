@@ -106,27 +106,36 @@ if (isset($_POST["saved"])) {
     }
 }
 ?>
+	<form method="POST">
+        	<label for="email">Email</label>
+	        <input type="email" name="email" value="<?php safer_echo(get_email()); ?>"/>
+       		<label for="username">Username</label>
+        	<input type="text" maxlength="60" name="username" value="<?php safer_echo(get_username()); ?>"/>
+	        <!-- DO NOT PRELOAD PASSWORD-->
+	        <label for="pw">Password</label>
+        	<input type="password" name="password"/>
+        	<label for="cpw">Confirm Password</label>
+        	<input type="password" name="confirm"/>
+        	<input type="submit" name="saved" value="Save Profile"/>
+        </form>
 <?php
 //this gets score from database
-//$query = "";
 $score = [];
 $results = [];
-//if (isset($_POST["query"])) {
-   // $query = $_POST["query"];
     $db = getDB();
     $stmt = $db->prepare("SELECT score FROM Users JOIN Scores on Users.id = Scores.user_id where Users.id = :sid order by Scores.created desc LIMIT 10");
     $stmt->execute([":sid" => get_user_id()]);
     $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
-    //$_SESSION["score"] = $score;
-//}
 ?>
 <div class="results">
+    <div>
+         <div>Score History</div>
+    </div>
     <?php if (count($results) > 0): ?>
         <div class="list-group">
             <?php foreach ($results as $r): ?>
                 <div class="list-group-item">
                     <div>
-                        <div>Score History:</div>
                         <div><?php safer_echo($r["score"]); ?></div>
                     </div>
                 </div>
@@ -136,16 +145,4 @@ $results = [];
         <p>No results</p>
     <?php endif; ?>
 </div>
-    <form method="POST">
-        <label for="email">Email</label>
-        <input type="email" name="email" value="<?php safer_echo(get_email()); ?>"/>
-        <label for="username">Username</label>
-        <input type="text" maxlength="60" name="username" value="<?php safer_echo(get_username()); ?>"/>
-        <!-- DO NOT PRELOAD PASSWORD-->
-        <label for="pw">Password</label>
-        <input type="password" name="password"/>
-        <label for="cpw">Confirm Password</label>
-        <input type="password" name="confirm"/>
-        <input type="submit" name="saved" value="Save Profile"/>
-    </form>
 <?php require(__DIR__ . "/partials/flash.php");
