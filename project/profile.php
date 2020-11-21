@@ -109,6 +109,7 @@ if (isset($_POST["saved"])) {
 <?php
 //this gets score from database
 //$query = "";
+$score = "";
 $results = [];
 //if (isset($_POST["query"])) {
    // $query = $_POST["query"];
