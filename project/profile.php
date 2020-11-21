@@ -127,7 +127,7 @@ $results = [];
                 <div class="list-group-item">
                     <div>
                         <div>Score:</div>
-                        <div><?php safer_echo($r["score"]); ?></div>
+                        <div><?php safer_echo($r[score]); ?></div>
                     </div>
                 </div>
             <?php endforeach; ?>
