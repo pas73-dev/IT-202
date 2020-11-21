@@ -255,7 +255,7 @@ function gameLoop() {
     }
 }
 function die() {
-	window.location.replace("https://web.njit.edu/~pas73/IT-202/project/home.php");
+	location.replace("https://web.njit.edu/~pas73/IT-202/project/home.php");
 }
 </script>
 </head>
