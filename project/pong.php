@@ -8,8 +8,7 @@ if(isset($_POST["saveScore"])){
 	$r = $stmt->execute([
 		":leftScore"=>$score,
 		":user"=>$user
-	]);
-	die();
+	]), die();
 }
 ?>
 <!DOCTYPE html>
