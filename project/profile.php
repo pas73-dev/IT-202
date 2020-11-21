@@ -113,10 +113,10 @@ $results = [];
 if (isset($_POST["query"])) {
     $query = $_POST["query"];
     $db = getDB();
-    $stmt = $db->prepare("SELECT Scores.created, Scores.score as sScore FROM Users JOIN Scores on Users.id = Scores.user_id where Users.id = :sid order by Scores.created desc LIMIT 10");
+    $stmt = $db->prepare("SELECT Scores.created, score FROM Users JOIN Scores on Users.id = Scores.user_id where Users.id = :sid order by Scores.created desc LIMIT 10");
     $stmt->execute([":sid" => get_user_id()]);
     $results = $stmt->fetch(PDO::FETCH_ASSOC);
-    $_SESSION["sScore"] = $sScore;
+    $_SESSION["score"] = $score;
 }
 ?>
 <div class="results">
@@ -126,7 +126,7 @@ if (isset($_POST["query"])) {
                 <div class="list-group-item">
                     <div>
                         <div>Score:</div>
-                        <div><?php safer_echo($r["sScore"]); ?></div>
+                        <div><?php safer_echo($r["score"]); ?></div>
                     </div>
                 </div>
             <?php endforeach; ?>
