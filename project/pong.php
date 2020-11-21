@@ -254,11 +254,13 @@ function gameLoop() {
         drawables[i].draw();
     }
 }
-function die() {
-	location.replace("https://web.njit.edu/~pas73/IT-202/project/home.php");
-}
 </script>
 </head>
+<script>
+function die(){
+	window.location.replace("https://web.njit.edu/~pas73/IT-202/project/home.php");
+}
+</script>
 <script>
 function saveScore() {
   var xhttp = new XMLHttpRequest();
