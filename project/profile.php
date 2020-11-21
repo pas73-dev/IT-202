@@ -108,22 +108,17 @@ if (isset($_POST["saved"])) {
 
 
 ?>
-//this is to get the scores from the database
 <?php
+//this gets score from database
 $query = "";
 $results = [];
 if (isset($_POST["query"])) {
     $query = $_POST["query"];
-}
-if (isset($_POST["search"])) {
     $db = getDB();
-    $stmt = $db->prepare("SELECT Scores.id, score, Users.username from Scores JOIN Users on Scores.user_id = Users.id WHERE username like :q LIMIT 10");
+    $stmt = $db->prepare("SELECT Users.username, Scores.score FROM Users JOIN Scores on Users.id = Scores.user_id like :q LIMIT 10");
     $r = $stmt->execute([":q" => "%$query%"]);
     if ($r) {
         $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
-    }
-    else {
-        flash("There was a problem fetching the results" .var_export($stmt->errorInfo(), true));
     }
 }
 ?>
@@ -135,10 +130,6 @@ if (isset($_POST["search"])) {
                     <div>
                         <div>Score:</div>
                         <div><?php safer_echo($r["score"]); ?></div>
-                    </div>
-                    <div>
-                        <div>Owner Id:</div>
-                        <div><?php safer_echo($r["username"]); ?></div>
                     </div>
                 </div>
             <?php endforeach; ?>
