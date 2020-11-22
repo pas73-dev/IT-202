@@ -12,7 +12,7 @@ if (isset($_SESSION["user"]) && isset($_SESSION["user"]["email"])) {
 $score = [];
 $Wresults = [];
     $db = getDB();
-    $stmt = $db->prepare("SELECT Users.username as name, Scores.created as date, score FROM Users JOIN Scores on Users.id = Scores.user_id where DATEPART(week, Scores.created) = (DATEPART(week, GETDATE()) - 1) order by Scores.created desc LIMIT 10");
+    $stmt = $db->prepare("SELECT score FROM Users JOIN Scores on Users.id = Scores.user_id where DATEPART(week, Scores.created) = (DATEPART(week, GETDATE()) - 1) order by Scores.created desc LIMIT 10");
     $Wresults = $stmt->fetchAll(PDO::FETCH_ASSOC);
 ?>
 <div class="Wresults">
