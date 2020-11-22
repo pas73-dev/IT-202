@@ -8,33 +8,27 @@ if (isset($_SESSION["user"]) && isset($_SESSION["user"]["email"])) {
 ?>
     <p>Welcome, <?php echo $email; ?></p>
 <?php
-//this gets weekly score
+//this gets Weekly score
 $score = [];
 $results = [];
     $db = getDB();
-    $stmt = $db->prepare("SELECT score FROM Users JOIN Scores on Users.id = Scores.user_id where Users.id = :sid order by Scores.created desc LIMIT 10");
-    $stmt->execute([":sid" => get_user_id()]);
-    $results = $stmt->fetch(PDO::FETCH_ASSOC);
-    $_SESSION["score"] = $score;
+    $stmt = $db->prepare("SELECT Users.username as name, Scores.created as date, score FROM Users JOIN Scores on Users.id = Scores.user_id where  order by Scores.created desc LIMIT 10");
+    $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
 ?>
 <?php
-//this gets Monthly score
+//this gets monthly score
 $score = [];
 $results = [];
     $db = getDB();
-    $stmt = $db->prepare("SELECT score FROM Users JOIN Scores on Users.id = Scores.user_id where Users.id = :sid order by Scores.created desc LIMIT 10");
-    $stmt->execute([":sid" => get_user_id()]);
-    $results = $stmt->fetch(PDO::FETCH_ASSOC);
-    $_SESSION["score"] = $score;
+    $stmt = $db->prepare("SELECT Users.username as name, Scores.created as date, score FROM Users JOIN Scores on Users.id = Scores.user_id where convert(varchar(6), Scores.created, 112) = CONVERT (varchar(6), DATEADD(Month, -1, GETDATE()), 112) order by Scores.score, Scores.created desc LIMIT 10");
+    $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
 ?>
 <?php
-//this gets Lifetime score
+//this gets lifetime score
 $score = [];
 $results = [];
     $db = getDB();
-    $stmt = $db->prepare("SELECT score FROM Users JOIN Scores on Users.id = Scores.user_id where Users.id = :sid order by Scores.created desc LIMIT 10");
-    $stmt->execute([":sid" => get_user_id()]);
-    $results = $stmt->fetch(PDO::FETCH_ASSOC);
-    $_SESSION["score"] = $score;
+    $stmt = $db->prepare("SELECT Users.username as name, Scores.created as date, score FROM Users JOIN Scores on Users.id = Scores.user_id order by Scores.score, Scores.created desc LIMIT 10");
+    $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
 ?>
 <?php require(__DIR__ . "/partials/flash.php");
