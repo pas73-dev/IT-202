@@ -13,6 +13,7 @@ $score = [];
 $Wresults = [];
     $db = getDB();
     $stmt = $db->prepare("SELECT score FROM Users JOIN Scores on Users.id = Scores.user_id where DATEPART(week, Scores.created) = 47 order by Scores.score, Scores.created desc LIMIT 10");
+    $stmt->execute([]);
     $Wresults = $stmt->fetchAll(PDO::FETCH_ASSOC);
 ?>
 <div class="Wresults">
