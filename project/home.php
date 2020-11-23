@@ -18,14 +18,14 @@ $Wresults = [];
 <div class="Wresults">
     <div>
          <div>Last Week Top 10 Score</div>
-	 <div>Name &nbsp&nbsp Score &nbsp&nbsp Date</div>
+	 <div>Name &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp Score &nbsp&nbsp Date</div>
     </div>
     <?php if (count($Wresults) > 0): ?>
         <div class="list-group">
             <?php foreach ($Wresults as $w): ?>
                 <div class="list-group-item">
                     <div>
-			<div><?php safer_echo($w["name"]); ?> &nbsp&nbsp&nbsp; <?php safer_echo($w["score"]);?> &nbsp&nbsp&nbsp <?php safer_echo($w["date"]); ?></div>
+			<div><?php safer_echo($w["name"]); ?> &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp; <?php safer_echo($w["score"]);?> &nbsp&nbsp&nbsp&nbsp&nbsp; <?php safer_echo($w["date"]); ?></div>
                     </div>
                 </div>
             <?php endforeach; ?>
