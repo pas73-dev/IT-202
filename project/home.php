@@ -18,7 +18,7 @@ $Wresults = [];
 <div class="Wresults">
     <div>
          <div>Last Week Top 10 Score</div>
-	 <div>Name           Score                   Date</div>
+	 <div>Name,           Score,                   Date</div>
     </div>
     <?php if (count($Wresults) > 0): ?>
         <div class="list-group">
@@ -46,6 +46,7 @@ $Mresults = [];
 <div class="Mresults">
     <div>
         <p></p> <div>Last Month Top 10 Score</div>
+	<div>Name,           Score,                   Date</div>
     </div>
     <?php if (count($Mresults) > 0): ?>
         <div class="list-group">
@@ -73,6 +74,7 @@ $Lresults = [];
 <div class="Lresults">
     <div>
         <p></p> <div>Top 10 Lifetime Score</div>
+	<div>Name,           Score,                   Date</div>
     </div>
     <?php if (count($Lresults) > 0): ?>
         <div class="list-group">
