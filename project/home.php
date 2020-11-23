@@ -18,7 +18,7 @@ $Wresults = [];
 <div class="Wresults">
     <div>
          <div>Last Week Top 10 Score</div>
-	 <div>Name,           Score,                   Date</div>
+	 <p>Name           Score                   Date</p>
     </div>
     <?php if (count($Wresults) > 0): ?>
         <div class="list-group">
