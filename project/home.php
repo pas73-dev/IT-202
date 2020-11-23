@@ -12,7 +12,7 @@ if (isset($_SESSION["user"]) && isset($_SESSION["user"]["email"])) {
 $score = [];
 $Wresults = [];
     $db = getDB();
-    $stmt = $db->prepare("SELECT score FROM Users JOIN Scores on Users.id = Scores.user_id where DATEPART(week, Scores.created) = 47 order by Scores.score, Scores.created desc LIMIT 10");
+    $stmt = $db->prepare("SELECT score FROM Users JOIN Scores on Users.id = Scores.user_id where YEARWEEK(Scores.created) = 47 order by Scores.score, Scores.created desc LIMIT 10");
     $stmt->execute([]);
     $Wresults = $stmt->fetchAll(PDO::FETCH_ASSOC);
 ?>
@@ -39,7 +39,7 @@ $Wresults = [];
 $score = [];
 $Mresults = [];
     $db = getDB();
-    $stmt = $db->prepare("SELECT Users.username as name, Scores.created as date, score FROM Users JOIN Scores on Users.id = Scores.user_id where convert(varchar(6), Scores.created, 112) = CONVERT (varchar(6), DATEADD(Month, - 1, GETDATE()), 112) order by Scores.score, Scores.created desc LIMIT 10");
+    $stmt = $db->prepare("SELECT Users.username as name, Scores.created as date, score FROM Users JOIN Scores on Users.id = Scores.user_id where convert(varchar(6), Scores.created, 112) = CONVERT (varchar(6), DATEADD(Month, - 1, NOW()), 112) order by Scores.score, Scores.created desc LIMIT 10");
     $Mresults = $stmt->fetchAll(PDO::FETCH_ASSOC);
 ?>
 <?php
