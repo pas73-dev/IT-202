@@ -9,9 +9,6 @@ if (isset($_SESSION["user"]) && isset($_SESSION["user"]["email"])) {
     <p>Welcome, <?php echo $email; ?></p>
 <?php
 //this gets Weekly score
-//$score = [];
-//$name = [];
-//$date = [];
 $Wresults = [];
     $db = getDB();
     $stmt = $db->prepare("SELECT Users.username as name, Scores.created as date, Scores.score FROM Users JOIN Scores on Users.id = Scores.user_id where YEARWEEK(Scores.created) = (YEARWEEK(NOW()) -1) order by Scores.score desc, Scores.created asc LIMIT 10");
@@ -27,7 +24,7 @@ $Wresults = [];
             <?php foreach ($Wresults as $w): ?>
                 <div class="list-group-item">
                     <div>
-			<div><?php safer_echo($w["name"]); ?> &nbsp&nbsp&nbsp; <?php safer_echo($w["score"]);?> <?php safer_echo($w["date"]); ?></div>
+			<div><?php safer_echo($w["name"]); ?> &nbsp&nbsp&nbsp; <?php safer_echo($w["score"]);?> &nbsp&nbsp&nbsp <?php safer_echo($w["date"]); ?></div>
                     </div>
                 </div>
             <?php endforeach; ?>
@@ -37,8 +34,8 @@ $Wresults = [];
     <?php endif; ?>
 </div>
 <?php
+
 //this gets monthly score
-$score = [];
 $Mresults = [];
     $db = getDB();
     $stmt = $db->prepare("SELECT Users.username as name, Scores.created as date, score FROM Users JOIN Scores on Users.id = Scores.user_id where convert(varchar(6), Scores.created, 112) = CONVERT (varchar(6), DATEADD(Month, - 1, NOW()), 112) order by Scores.score desc, Scores.created asc LIMIT 10");
@@ -53,7 +50,7 @@ $Mresults = [];
             <?php foreach ($Mresults as $m): ?>
                 <div class="list-group-item">
                     <div>
-			<div><?php safer_echo($m["name"]); ?>        <?php safer_echo($m["score"]); ?>     <?php safer_echo($m["date"]); ?></div>
+			<div><?php safer_echo($m["name"]); ?> &nbsp&nbsp&nbsp <?php safer_echo($m["score"]); ?> &nbsp&nbsp&nbsp <?php safer_echo($m["date"]); ?></div>
                     </div>
                 </div>
             <?php endforeach; ?>
@@ -63,8 +60,8 @@ $Mresults = [];
     <?php endif; ?>
 </div>
 <?php
+
 //this gets lifetime score
-$score = [];
 $Lresults = [];
     $db = getDB();
     $stmt = $db->prepare("SELECT Users.username as name, Scores.created as date, score FROM Users JOIN Scores on Users.id = Scores.user_id order by Scores.score desc, Scores.created asc LIMIT 10");
@@ -79,7 +76,7 @@ $Lresults = [];
             <?php foreach ($Lresults as $l): ?>
                 <div class="list-group-item">
                     <div>
-			<div><?php safer_echo($l["name"]); ?>        <?php safer_echo($l["score"]); ?>     <?php safer_echo($l["date"]); ?></div>
+			<div><?php safer_echo($l["name"]); ?> &nbsp&nbsp&nbsp <?php safer_echo($l["score"]); ?> &nbsp&nbsp&nbsp <?php safer_echo($l["date"]); ?></div>
                     </div>
                 </div>
             <?php endforeach; ?>
