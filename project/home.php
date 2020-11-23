@@ -59,7 +59,7 @@ $Mresults = [];
             <?php endforeach; ?>
         </div>
      <?php else: ?>
-        <p>No results</p>
+        <div>No results</div>
     <?php endif; ?>
 </div>
 <?php
