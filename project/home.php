@@ -27,7 +27,7 @@ $Wresults = [];
             <?php foreach ($Wresults as $w): ?>
                 <div class="list-group-item">
                     <div>
-			<div><?php safer_echo($w["name"]); safer_echo($w["score"]); &nbsp; safer_echo($w["date"]); ?></div>
+			<div><?php safer_echo($w["name"&nbsp&nbsp]); ?> <?php safer_echo($w["score"]);?> <?php safer_echo($w["date"]); ?></div>
                     </div>
                 </div>
             <?php endforeach; ?>
