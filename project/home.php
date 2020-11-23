@@ -46,14 +46,14 @@ $Mresults = [];
 <div class="Mresults">
     <div>
         <p></p> <div>Last Month Top 10 Score</div>
-	<div>Name,           Score,                   Date</div>
+	<div>Name &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp Score &nbsp&nbsp Date</div>
     </div>
     <?php if (count($Mresults) > 0): ?>
         <div class="list-group">
             <?php foreach ($Mresults as $m): ?>
                 <div class="list-group-item">
                     <div>
-			<div><?php safer_echo($m["name"]); ?> &nbsp&nbsp&nbsp <?php safer_echo($m["score"]); ?> &nbsp&nbsp&nbsp <?php safer_echo($m["date"]); ?></div>
+			<div><?php safer_echo($m["name"]); ?> &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp; <?php safer_echo($m["score"]);?> &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp; <?php safer_echo($m["date"]); ?></div>
                     </div>
                 </div>
             <?php endforeach; ?>
@@ -74,14 +74,14 @@ $Lresults = [];
 <div class="Lresults">
     <div>
         <p></p> <div>Top 10 Lifetime Score</div>
-	<div>Name,           Score,                   Date</div>
+	<div>Name &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp Score &nbsp&nbsp Date</div>
     </div>
     <?php if (count($Lresults) > 0): ?>
         <div class="list-group">
             <?php foreach ($Lresults as $l): ?>
                 <div class="list-group-item">
                     <div>
-			<div><?php safer_echo($l["name"]); ?> &nbsp&nbsp&nbsp <?php safer_echo($l["score"]); ?> &nbsp&nbsp&nbsp <?php safer_echo($l["date"]); ?></div>
+			<div><?php safer_echo($l["name"]); ?> &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp; <?php safer_echo($l["score"]);?> &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp; <?php safer_echo($l["date"]); ?></div>
                     </div>
                 </div>
             <?php endforeach; ?>
