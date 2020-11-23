@@ -46,7 +46,7 @@ $Mresults = [];
 ?>
 <div class="Mresults">
     <div>
-        <div></div> <div>Last Month Top 10 Score</div>
+        <p></p> <div>Last Month Top 10 Score</div>
     </div>
     <?php if (count($Mresults) > 0): ?>
         <div class="list-group">
@@ -72,7 +72,7 @@ $Lresults = [];
 ?>
 <div class="Lresults">
     <div>
-        <div></div> <div>Top 10 Lifetime Score</div>
+        <p></p> <div>Top 10 Lifetime Score</div>
     </div>
     <?php if (count($Lresults) > 0): ?>
         <div class="list-group">
