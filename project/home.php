@@ -28,8 +28,6 @@ $Wresults = [];
                 <div class="list-group-item">
                     <div>
                         <div><?php safer_echo($w["score"]); ?><?php safer_echo($w["name"]); ?></div>
-			//<div><?php safer_echo($w["name"]); ?></div>
-			//<div><?php safer_echo($w["date"]); ?></div>
                     </div>
                 </div>
             <?php endforeach; ?>
