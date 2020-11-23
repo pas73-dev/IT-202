@@ -10,6 +10,8 @@ if (isset($_SESSION["user"]) && isset($_SESSION["user"]["email"])) {
 <?php
 //this gets Weekly score
 $score = [];
+$name = [];
+$date = [];
 $Wresults = [];
     $db = getDB();
     $stmt = $db->prepare("SELECT Users.username as name, Scores.created as date, Scores.score FROM Users JOIN Scores on Users.id = Scores.user_id where YEARWEEK(Scores.created) = (YEARWEEK(NOW()) -1) order by Scores.score desc, Scores.created asc LIMIT 10");
@@ -25,7 +27,9 @@ $Wresults = [];
             <?php foreach ($Wresults as $w): ?>
                 <div class="list-group-item">
                     <div>
-                        <div><?php safer_echo($w["name"]["score"]); ?></div>
+                        <div><?php safer_echo($w["score"]); ?></div>
+			<div><?php safer_echo($w["name"]); ?></div>
+			<div><?php safer_echo($w["date"]); ?></div>
                     </div>
                 </div>
             <?php endforeach; ?>
