@@ -11,7 +11,7 @@ if (isset($_SESSION["user"]) && isset($_SESSION["user"]["email"])) {
 //this gets Weekly score
 $Wresults = [];
     $db = getDB();
-    $stmt = $db->prepare("SELECT Users.username as name, Scores.created as date, Scores.score FROM Users JOIN Scores on Users.id = Scores.user_id where YEARWEEK(Scores.created) = (YEARWEEK(NOW()) -1) order by Scores.score desc, Scores.created asc LIMIT 10");
+    $stmt = $db->prepare("SELECT Users.username as name, Scores.created as date, Scores.score as  score FROM Users JOIN Scores on Users.id = Scores.user_id where YEARWEEK(Scores.created) = (YEARWEEK(NOW()) -1) order by Scores.score desc, Scores.created asc LIMIT 10");
     $stmt->execute([]);
     $Wresults = $stmt->fetchAll(PDO::FETCH_ASSOC);
 ?>
@@ -38,7 +38,7 @@ $Wresults = [];
 //this gets monthly score
 $Mresults = [];
     $db = getDB();
-    $stmt = $db->prepare("SELECT Users.username as name, Scores.created as date, score FROM Users JOIN Scores on Users.id = Scores.user_id where DATE_FORMAT(Scores.created, '%Y%m') = DATE_FORMAT(NOW(), '%Y%m') order by Scores.score desc, Scores.created asc LIMIT 10");
+    $stmt = $db->prepare("SELECT Users.username as Mname, Scores.created as Mdate, Scores.score as Mscore FROM Users JOIN Scores on Users.id = Scores.user_id where DATE_FORMAT(Scores.created, '%Y%m') = DATE_FORMAT(NOW(), '%Y%m') order by Scores.score desc, Scores.created asc LIMIT 10");
     $Mresults = $stmt->fetchAll(PDO::FETCH_ASSOC);
 ?>
 <div class="Mresults">
@@ -50,7 +50,7 @@ $Mresults = [];
             <?php foreach ($Mresults as $m): ?>
                 <div class="list-group-item">
                     <div>
-			<div><?php safer_echo($m["name"]); ?> &nbsp&nbsp&nbsp <?php safer_echo($m["score"]); ?> &nbsp&nbsp&nbsp <?php safer_echo($m["date"]); ?></div>
+			<div><?php safer_echo($m["Mname"]); ?> &nbsp&nbsp&nbsp <?php safer_echo($m["Mscore"]); ?> &nbsp&nbsp&nbsp <?php safer_echo($m["Mdate"]); ?></div>
                     </div>
                 </div>
             <?php endforeach; ?>
@@ -64,7 +64,7 @@ $Mresults = [];
 //this gets lifetime score
 $Lresults = [];
     $db = getDB();
-    $stmt = $db->prepare("SELECT Users.username as name, Scores.created as date, score FROM Users JOIN Scores on Users.id = Scores.user_id order by Scores.score desc, Scores.created asc LIMIT 10");
+    $stmt = $db->prepare("SELECT Users.username as Lname, Scores.created as Ldate, Scores.score as Lscore FROM Users JOIN Scores on Users.id = Scores.user_id order by Scores.score desc, Scores.created asc LIMIT 10");
     $Lresults = $stmt->fetchAll(PDO::FETCH_ASSOC);
 ?>
 <div class="Lresults">
@@ -76,7 +76,7 @@ $Lresults = [];
             <?php foreach ($Lresults as $l): ?>
                 <div class="list-group-item">
                     <div>
-			<div><?php safer_echo($l["name"]); ?> &nbsp&nbsp&nbsp <?php safer_echo($l["score"]); ?> &nbsp&nbsp&nbsp <?php safer_echo($l["date"]); ?></div>
+			<div><?php safer_echo($l["Lname"]); ?> &nbsp&nbsp&nbsp <?php safer_echo($l["Lscore"]); ?> &nbsp&nbsp&nbsp <?php safer_echo($l["Ldate"]); ?></div>
                     </div>
                 </div>
             <?php endforeach; ?>
