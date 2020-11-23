@@ -12,7 +12,7 @@ if (isset($_SESSION["user"]) && isset($_SESSION["user"]["email"])) {
 $score = [];
 $Wresults = [];
     $db = getDB();
-    $stmt = $db->prepare("SELECT Users.username as name, score FROM Users JOIN Scores on Users.id = Scores.user_id where RIGHT(YEARWEEK(Scores.created), 2) = (RIGHT(YEARWEEK(NOW()), 2) -1) order by Scores.score, Scores.created desc LIMIT 10");
+    $stmt = $db->prepare("SELECT Users.username as name, score FROM Users JOIN Scores on Users.id = Scores.user_id where RIGHT(YEARWEEK(Scores.created), 2) = (RIGHT(YEARWEEK(NOW()), 2) -1) order by Scores.score desc, Scores.created desc LIMIT 10");
     $stmt->execute([]);
     $Wresults = $stmt->fetchAll(PDO::FETCH_ASSOC);
 ?>
@@ -25,7 +25,7 @@ $Wresults = [];
             <?php foreach ($Wresults as $w): ?>
                 <div class="list-group-item">
                     <div>
-                        <div><?php safer_echo($w["score"]); ?></div>
+                        <div><?php safer_echo($w["name"]["score"]); ?></div>
                     </div>
                 </div>
             <?php endforeach; ?>
