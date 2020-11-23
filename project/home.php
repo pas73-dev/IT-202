@@ -38,7 +38,7 @@ $Wresults = [];
 //this gets monthly score
 $Mresults = [];
     $db = getDB();
-    $stmt = $db->prepare("SELECT Users.username as name, Scores.created as date, score FROM Users JOIN Scores on Users.id = Scores.user_id where convert(varchar(6), Scores.created, 112) = CONVERT (varchar(6), DATEADD(Month, - 1, NOW()), 112) order by Scores.score desc, Scores.created asc LIMIT 10");
+    $stmt = $db->prepare("SELECT Users.username as name, Scores.created as date, score FROM Users JOIN Scores on Users.id = Scores.user_id where DATE_FORMAT(Scores.created, '%Y%m') = DATE_FORMAT(NOW(), '%Y%m') order by Scores.score desc, Scores.created asc LIMIT 10");
     $Mresults = $stmt->fetchAll(PDO::FETCH_ASSOC);
 ?>
 <div class="Mresults">
