@@ -27,7 +27,7 @@ $Wresults = [];
             <?php foreach ($Wresults as $w): ?>
                 <div class="list-group-item">
                     <div>
-			<div><?php safer_echo($w["name"]); ?>        <?php safer_echo($w["score"]); ?>     <?php safer_echo($w["date"]); ?></div>
+			<div><?php safer_echo($w["name"]); safer_echo($w["score"]); &nbsp; safer_echo($w["date"]); ?></div>
                     </div>
                 </div>
             <?php endforeach; ?>
@@ -85,7 +85,7 @@ $Lresults = [];
             <?php endforeach; ?>
         </div>
      <?php else: ?>
-        <p>No results</p>
+        <div>No results</div>
     <?php endif; ?>
 </div>
 <?php require(__DIR__ . "/partials/flash.php");
