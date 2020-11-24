@@ -8,7 +8,7 @@ if (isset($_SESSION["user"]) && isset($_SESSION["user"]["email"])) {
 ?>
     <p>Welcome, <?php echo $email; ?></p>
 <?php
-//this gets Weekly score
+//this gets Weekly score from the database from all users with a score
 $Wresults = [];
     $db = getDB();
     $stmt = $db->prepare("SELECT Users.username as name, Scores.created as date, Scores.score as  score FROM Users JOIN Scores on Users.id = Scores.user_id where YEARWEEK(Scores.created) = (YEARWEEK(NOW()) -1) order by Scores.score desc, Scores.created asc LIMIT 10");
