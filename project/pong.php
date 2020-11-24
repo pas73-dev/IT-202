@@ -1,5 +1,6 @@
 <?php require_once(__DIR__ . "/partials/nav.php"); ?>
 <?php
+//now it send the current left score to the database when the cpu gets 5 points
 if(isset($_POST["saveScore"])){
 	$score = $_POST["score"];
 	$user = get_user_id();

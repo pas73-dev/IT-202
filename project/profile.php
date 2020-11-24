@@ -1,8 +1,6 @@
 <?php require_once(__DIR__ . "/partials/nav.php"); ?>
 <?php
-//Note: we have this up here, so our update happens before our get/fetch
-//that way we'll fetch the updated data and have it correctly reflect on the form below
-//As an exercise swap these two and see how things change
+//I added score history for the user
 if (!is_logged_in()) {
     //this will redirect to login and kill the rest of this script (prevent it from executing)
     flash("You must be logged in to access this page");
@@ -119,7 +117,7 @@ if (isset($_POST["saved"])) {
         	<input type="submit" name="saved" value="Save Profile"/>
         </form>
 <?php
-//this gets score from database
+//this gets score from database and displays the user score at the bottom of the page
 $score = [];
 $results = [];
     $db = getDB();
