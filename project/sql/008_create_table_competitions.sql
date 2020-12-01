@@ -1,7 +1,6 @@
 CREATE TABLE IF NOT EXISTS 'Competitions'
 (
     id   int auto_increment,
-    user_id int,
     name varchar(60),
     created TIMESTAMP default current_timestamp,
     duration int default 7,
@@ -18,6 +17,5 @@ CREATE TABLE IF NOT EXISTS 'Competitions'
     inc_points int default 1,
     percent float default .5,
     fee int default 0,
-    primary key (id),
-    foreign key (user_id) references Users (id)
+    primary key (id)
 )
