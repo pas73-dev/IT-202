@@ -15,5 +15,5 @@ CREATE TABLE Competitions
     third_place_per varchar(60) default '',
     fee int,
     primary key (id),
-    foreign key (user_id) references Users (id)
+    references Users (id)
 )
