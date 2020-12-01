@@ -2,7 +2,7 @@ CREATE TABLE IF NOT EXISTS 'Competitions'
 (
     id   int auto_increment,
     user_id int,
-    name varchar(60) default '',
+    name varchar(60),
     created TIMESTAMP default current_timestamp,
     duration int default 7,
     expires timestamp,
