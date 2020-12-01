@@ -1,6 +1,6 @@
 CREATE TABLE IF NOT EXISTS 'Competitions'
 (
-    id   int auto_increment,
+    id int auto_increment,
     name varchar(60),
     created TIMESTAMP default current_timestamp,
     duration int default 7,
