@@ -6,5 +6,6 @@ CREATE TABLE `Association`
     created TIMESTAMP default current_timestamp,
     primary key (id),
     foreign key (user_id) references Users (id),
-    foreign key (comp_id) references Competitions(id)
+    foreign key (comp_id) references Competitions(id),
+    unique key `user_comp` (user_id, comp_id)
 )
