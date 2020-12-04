@@ -72,7 +72,7 @@ function getMessages() {
 function getScore($n) {
     echo score;
 }
-function getBalance(){
+function getBalance($n){
     return points_change;
 }
 ?>
