@@ -78,7 +78,6 @@ function getBalance($n){
         $stmt = $db->prepare("SELECT sum(points_change) as totalpoints from PointsHistory where user_id = :id group by user_id");    
 	$stmt->execute([":id" => get_user_id()]);
 	$results = $stmt->fetchAll(PDO::FETCH_ASSOC);
-        return totalpoints;
 }
 ?>
 
