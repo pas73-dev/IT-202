@@ -14,6 +14,7 @@ CREATE TABLE `Competitions`
     second_place_per float default 0.0,
     third_place_per float default 0.0,
     fee int default 0,
+    user_id int,
     primary key (id),
     foreign key (user_id) references Users(id)
 )
