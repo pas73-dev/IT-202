@@ -1,4 +1,4 @@
-CREATE TABLE IF NOT EXISTS `Competitions`
+CREATE TABLE `Competitions`
 (
     id int auto_increment,
     name varchar(60) not null,
