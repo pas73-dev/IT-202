@@ -73,7 +73,12 @@ function getScore($n) {
     echo score;
 }
 function getBalance($n){
-    return points_change;
+	$db = getDB();
+        $results = [];
+        $stmt = $db->prepare("SELECT points_change from PointsHistory where id = :id");    
+	$stmt->execute([":id" => get_user_id()]);
+	$results = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        return points_change;
 }
 ?>
 
