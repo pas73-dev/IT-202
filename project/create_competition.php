@@ -25,7 +25,7 @@ if (isset($_POST["name"])) {
         $days = (int)$_POST["duration"];
         $expires->add(new DateInterval("P" . $days . "D"));
         $expires = $expires->format("Y-m-d H:i:s");
-        $query = "INSERT INTO Competitions (name, duration, expires, reward, cost, min_score, first_place_per, second_place_per, third_place_per, fee) VALUES(:name, :duration, :expires, :reward, :cost, :min_score, :fp, :sp, :tp, :fee)";
+        $query = "INSERT INTO Competitions (name, duration, expires, reward, cost, min_score, first_place_per, second_place_per, third_place_per, fee, user_id) VALUES(:name, :duration, :expires, :reward, :cost, :min_score, :fp, :sp, :tp, :fee, :uid)";
         $stmt = $db->prepare($query);
         $params = [
             ":name" => $_POST["name"],
