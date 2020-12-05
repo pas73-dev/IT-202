@@ -72,7 +72,7 @@ function getMessages() {
 function getScore($n) {
     echo score;
 }
-/*
+
 function getBalance(){
 	$db = getDB();
         $results = [];
@@ -80,5 +80,5 @@ function getBalance(){
 	$stmt->execute([":id" => get_user_id()]);
 	$results = $stmt->fetch(PDO::FETCH_ASSOC);
 	return $results['totalpoints'];
-}*/
+}
 ?>
