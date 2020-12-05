@@ -72,13 +72,12 @@ function getMessages() {
 function getScore($n) {
     echo score;
 }
-function getBalance($t){
+function getBalance(){
 	$db = getDB();
         $results = [];
         $stmt = $db->prepare("SELECT ifnull(sum(points_change), 0) as totalpoints from PointsHistory where user_id = :id");
 	$stmt->execute([":id" => get_user_id()]);
 	$results = $stmt->fetch(PDO::FETCH_ASSOC);
-	$t = $results['totalpoints'];
-	echo $t;
+	echo $results['totalpoints'];
 }
 ?>
