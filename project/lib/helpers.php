@@ -75,9 +75,9 @@ function getScore($n) {
 function getBalance(){
 	$db = getDB();
         $results = [];
-        $stmt = $db->prepare("SELECT ifnull(sum(points_change), 0) as totalpoints from PointsHistory where user_id = :id");
+        $stmt = $db->prepare("SELECT IFNULL(sum(points_change), 0) as totalpoints from PointsHistory where user_id = :id");
 	$stmt->execute([":id" => get_user_id()]);
 	$results = $stmt->fetch(PDO::FETCH_ASSOC);
-	echo $results['totalpoints'];
+	return $results['totalpoints'];
 }
 ?>
