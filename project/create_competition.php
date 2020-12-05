@@ -15,7 +15,7 @@ if (isset($_POST["name"])) {
     }
     $cost++;
     //TODO other validation
-    $balance = getBalance();
+    $balance = 10; //getBalance();
     if ($cost > $balance) {
         flash("You can't afford to create this competition", "warning");
     }
