@@ -40,8 +40,11 @@ if (isset($_POST["join"])) {
         flash("Competition is unavailable", "warning");
     }
 }
+$stmt = $db->prepare("UPDATE Competitions set participants = (select count(user_id) from UserCompetitions where UserCompetitions.id = :id) where id = :id");
+$q = $stmt->execute([":id" => get_user_id(),]);
 $stmt = $db->prepare("SELECT c.*, UC.user_id as reg FROM Competitions c LEFT JOIN (SELECT * FROM Association where user_id = :id) as UC on c.id = UC.comp_id WHERE c.expires > current_timestamp AND paid_out = 0 ORDER BY expires ASC");
 $r = $stmt->execute([":id" => get_user_id(),]);
+
 if ($r) {
     $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
 }
