@@ -54,25 +54,8 @@ else {
         <div class="list-group">
             <?php if (isset($results) && count($results)): ?>
                 <div class="list-group-item font-weight-bold">
-                    <div class="row">
-                        <div class="col">
-                            Name
-                        </div>
-                        <div class="col">
-                            Participants
-                        </div>
-                        <div class="col">
-                            Required Score
-                        </div>
-                        <div class="col">
-                            Reward
-                        </div>
-                        <div class="col">
-                            Expires
-                        </div>
-                        <div class="col">
-                            Actions
-                        </div>
+                    <div>
+                            <div><?php safer_echo("Name"); ?> &nbsp&nbsp; <?php safer_echo("Participants");?> &nbsp&nbsp; <?php safer_echo("Required Score");?> &nbsp&nbsp; <?php safer_echo("Reward");?> &nbsp&nbsp; <?php safer_echo("Expires");?> &nbsp&nbsp; <?php safer_echo("Action");?> </div>
                     </div>
                 </div>
                 <?php foreach ($results as $r): ?>
