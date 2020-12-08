@@ -1,6 +1,6 @@
 CREATE TABLE IF NOT EXISTS `Association`
 (
-    id      int auto_increment,
+    id      int auto_increment, //this is to help the competition table
     user_id int,
     comp_id  int,
     `created` timestamp default current_timestamp,
