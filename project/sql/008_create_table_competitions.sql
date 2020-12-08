@@ -1,6 +1,6 @@
 CREATE TABLE `Competitions`
 (
-    id int auto_increment,
+    id int auto_increment, //added all of these inorder for the create competition page to work
     name varchar(30) not null,
     created timestamp default CURRENT_TIMESTAMP,
     duration int default 3,
