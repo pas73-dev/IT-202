@@ -1,5 +1,6 @@
 <?php require_once(__DIR__ . "/partials/nav.php"); ?>
 <?php
+// here is where the active list of competiton is made
 if (!is_logged_in()) {
     //this will redirect to login and kill the rest of this script (prevent it from executing)
     flash("You don't have permission to access this page");
