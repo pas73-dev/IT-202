@@ -81,4 +81,11 @@ function getBalance(){
 	$results = $stmt->fetch(PDO::FETCH_ASSOC);
 	return $results['totalpoints'];
 }
+function getCompwinner(){
+	$db = getDB();
+	$results = [];
+	$stmt = $db->prepare("SELECT c.user_id, count(c.user_id) as wins from Association as c JOIN PointsHistory as ph on c.user_id = ph.user_id WHERE c.comp_id = :id GROUP BY wins desc limit 3");
+	$stmt->execute([":id" => get_user_id()]);
+	$results = $stmt->fetch)PDO::FETCH_ASSOC);
+}
 ?>
