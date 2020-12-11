@@ -138,7 +138,7 @@ if($result){
 }
 $total_pages = ceil($total / $per_page);
 $offset = ($page-1) * $per_page;
-$stmt = $db->prepare("SELECT e.*, i.name as inc from Scores e LEFT JOIN Users i on e.id = i.user_id where e.user_id = :id LIMIT :offset, :count");
+$stmt = $db->prepare("SELECT e.*, i.username as inc from Scores e LEFT JOIN Users i on e.id = i.user_id where e.user_id = :id LIMIT :offset, :count");
 $stmt->bindValue(":offset", $offset, PDO::PARAM_INT);
 $stmt->bindValue(":count", $per_page, PDO::PARAM_INT);
 $stmt->bindValue(":id", get_user_id());
