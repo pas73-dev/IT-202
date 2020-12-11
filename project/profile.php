@@ -143,4 +143,29 @@ $results = [];
         <p>No results</p>
     <?php endif; ?>
 </div>
+
+<?php
+$id = get_user_id();
+if(isset($_GET["id"])){
+	$id = $_GET["id"];
+}
+$query = "SELECT email, username, points, vis FROM Users where id = :id";
+$stmt = $db->prepare($query);
+$stmt->excute([":id=>$id]);
+$result = $stmt->fetch();
+$profData = [];
+$isViewed = false;
+if($result["vis"] == 1 or $id == get_user_id()){
+	$profData = $result;
+	$isViewed = true;
+}
+else{
+	//die(header("Location: home.php"));
+}
+foreach($profData as $record):
+	if(!isViewed):
+		<input type = "password" none/>
+endif;
+?>
+
 <?php require(__DIR__ . "/partials/flash.php");
