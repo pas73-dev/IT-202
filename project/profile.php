@@ -117,6 +117,38 @@ if (isset($_POST["saved"])) {
         	<input type="submit" name="saved" value="Save Profile"/>
         </form>
 <?php
+$page = 1;
+$per_page = 5;
+if(isset($_GET["page"])){
+    try {
+        $page = (int)$_GET["page"];
+    }
+    catch(Exception $e){
+
+    }
+}
+$db = getDB();
+$stmt = $db->prepare("SELECT count(*) as total from Scores e LEFT JOIN Users i on e.id = i.user_id where e.user_id = :id");
+$stmt->execute([":id"=>get_user_id()]);
+$result = $stmt->fetch(PDO::FETCH_ASSOC);
+$total = 0;
+if($result){
+    $total = (int)$result["total"];
+}
+$total_pages = ceil($total / $per_page);
+$offset = ($page-1) * $per_page;
+$stmt = $db->prepare("SELECT e.*, i.name as inc from Scores e LEFT JOIN Users i on e.id = i.user_id where e.user_id = :id LIMIT :offset, :count");
+$stmt->bindValue(":offset", $offset, PDO::PARAM_INT);
+$stmt->bindValue(":count", $per_page, PDO::PARAM_INT);
+$stmt->bindValue(":id", get_user_id());
+$stmt->execute();
+$e = $stmt->errorInfo();
+if($e[0] != "00000"){
+    flash(var_export($e, true), "alert");
+}
+$results = $stmt->fetchAll(PDO::FETCH_ASSOC);
+?>
+<?php
 //this gets score from database and displays the user score at the bottom of the page
 $score = [];
 $results = [];
