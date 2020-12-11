@@ -160,7 +160,7 @@ if($result["vis"] == 1 or $id == get_user_id()){
 	$isViewed = true;
 }
 else{
-	//die(header("Location: home.php"));
+	echo help;
 }
 foreach($profData as $record):
 	if(!isViewed):
