@@ -117,6 +117,7 @@ if (isset($_POST["saved"])) {
         	<input type="submit" name="saved" value="Save Profile"/>
         </form>
 <?php
+//https://www.digitalocean.com/community/tutorials/how-to-implement-pagination-in-mysql-with-php-on-ubuntu-18-04
 $page = 1;
 $per_page = 5;
 if(isset($_GET["page"])){
@@ -175,4 +176,17 @@ $results = [];
         <p>No results</p>
     <?php endif; ?>
 </div>
+<nav aria-label="Scores">
+            <ul class="pagination justify-content-center">
+                <li class="page-item <?php echo ($page-1) < 1?"disabled":"";?>">
+                    <a class="page-link" href="?page=<?php echo $page-1;?>" tabindex="-1">Previous</a>
+                </li>
+                <?php for($i = 0; $i < $total_pages; $i++):?>
+                <li class="page-item <?php echo ($page-1) == $i?"active":"";?>"><a class="page-link" href="?page=<?php echo ($i+1);?>"><?php echo ($i+1);?></a></li>
+                <?php endfor; ?>
+                <li class="page-item <?php echo ($page) >= $total_pages?"disabled":"";?>">
+                    <a class="page-link" href="?page=<?php echo $page+1;?>">Next</a>
+                </li>
+            </ul>
+        </nav>
 <?php require(__DIR__ . "/partials/flash.php");
