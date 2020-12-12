@@ -119,7 +119,7 @@ if (isset($_POST["saved"])) {
 <?php
 //https://www.digitalocean.com/community/tutorials/how-to-implement-pagination-in-mysql-with-php-on-ubuntu-18-04
 $page = 1;
-$per_page = 5;
+$per_page = 10;
 if(isset($_GET["page"])){
     try {
         $page = (int)$_GET["page"];
@@ -128,6 +128,8 @@ if(isset($_GET["page"])){
 
     }
 }
+$results1 = [];
+$result = [];
 $db = getDB();
 $stmt = $db->prepare("SELECT count(*) as total from Scores e LEFT JOIN Users i on e.id = i.user_id where e.user_id = :id");
 $stmt->execute([":id"=>get_user_id()]);
@@ -147,14 +149,14 @@ $e = $stmt->errorInfo();
 if($e[0] != "00000"){
     flash(var_export($e, true), "alert");
 }
-$results = $stmt->fetchAll(PDO::FETCH_ASSOC);
+$results1 = $stmt->fetchAll(PDO::FETCH_ASSOC);
 ?>
 <?php
 //this gets score from database and displays the user score at the bottom of the page
 $score = [];
 $results = [];
     $db = getDB();
-    $stmt = $db->prepare("SELECT score FROM Users JOIN Scores on Users.id = Scores.user_id where Users.id = :sid order by Scores.created desc LIMIT 5");
+    $stmt = $db->prepare("SELECT score FROM Users JOIN Scores on Users.id = Scores.user_id where Users.id = :sid order by Scores.created desc LIMIT 10");
     $stmt->execute([":sid" => get_user_id()]);
     $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
 ?>
