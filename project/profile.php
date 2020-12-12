@@ -179,7 +179,7 @@ $results = [];
     <?php endif; ?>
 </div>
 <nav aria-label="Scores">
-            <ul class="pagination justify-content-center">
+            <ul class="results1">
                 <li class="page-item <?php echo ($page-1) < 1?"disabled":"";?>">
                     <a class="page-link" href="?page=<?php echo $page-1;?>" tabindex="-1">Previous</a>
                 </li>
