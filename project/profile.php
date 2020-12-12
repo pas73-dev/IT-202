@@ -144,7 +144,7 @@ $stmt = $db->prepare("SELECT score FROM Users JOIN Scores on Users.id = Scores.u
 $stmt->bindValue(":offset", $offset, PDO::PARAM_INT);
 $stmt->bindValue(":count", $per_page, PDO::PARAM_INT);
 $stmt->bindValue(":id", get_user_id());
-$stmt->execute();
+$stmt->execute([":id" => get_user_id()]);
 $e = $stmt->errorInfo();
 if($e[0] != "00000"){
     flash(var_export($e, true), "alert");
