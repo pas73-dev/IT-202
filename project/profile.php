@@ -154,7 +154,7 @@ $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
 $score = [];
 $results = [];
     $db = getDB();
-    $stmt = $db->prepare("SELECT score FROM Users JOIN Scores on Users.id = Scores.user_id where Users.id = :sid order by Scores.created desc LIMIT 10");
+    $stmt = $db->prepare("SELECT score FROM Users JOIN Scores on Users.id = Scores.user_id where Users.id = :sid order by Scores.created desc LIMIT 5");
     $stmt->execute([":sid" => get_user_id()]);
     $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
 ?>
