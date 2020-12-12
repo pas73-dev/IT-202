@@ -140,11 +140,11 @@ if($result){
 }
 $total_pages = ceil($total / $per_page);
 $offset = ($page-1) * $per_page;
-$stmt = $db->prepare("SELECT score FROM Users JOIN Scores on Users.id = Scores.user_id where Users.id = :id order by Scores.created LIMIT 10 :offset, :count");
+$stmt = $db->prepare("SELECT score FROM Users JOIN Scores on Users.id = Scores.user_id where Users.id = :id, :offset, :count order by Scores.created LIMIT 10");
 $stmt->bindValue(":offset", $offset, PDO::PARAM_INT);
 $stmt->bindValue(":count", $per_page, PDO::PARAM_INT);
 $stmt->bindValue(":id", get_user_id());
-$stmt->execute([":id" => get_user_id()]);
+$stmt->execute();
 $e = $stmt->errorInfo();
 if($e[0] != "00000"){
     flash(var_export($e, true), "alert");
