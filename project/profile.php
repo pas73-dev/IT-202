@@ -128,7 +128,7 @@ if(isset($_GET["page"])){
 
     }
 }
-$results1 = [];
+$results = [];
 $result = [];
 $db = getDB();
 $stmt = $db->prepare("SELECT count(*) as total from Scores e LEFT JOIN Users i on e.id = i.user_id where e.user_id = :id");
@@ -140,7 +140,7 @@ if($result){
 }
 $total_pages = ceil($total / $per_page);
 $offset = ($page-1) * $per_page;
-$stmt = $db->prepare("SELECT e.*, i.username as inc from Scores e LEFT JOIN Users i on i.id = e.user_id where e.user_id = :id LIMIT :offset, :count");
+$stmt = $db->prepare("SELECT score FROM Users JOIN Scores on Users.id = Scores.user_id where Users_id = :id order by Scores.create LIMIT 10 :offset, :count");
 $stmt->bindValue(":offset", $offset, PDO::PARAM_INT);
 $stmt->bindValue(":count", $per_page, PDO::PARAM_INT);
 $stmt->bindValue(":id", get_user_id());
@@ -149,16 +149,7 @@ $e = $stmt->errorInfo();
 if($e[0] != "00000"){
     flash(var_export($e, true), "alert");
 }
-$results1 = $stmt->fetchAll(PDO::FETCH_ASSOC);
-?>
-<?php
-//this gets score from database and displays the user score at the bottom of the page
-$score = [];
-$results = [];
-    $db = getDB();
-    $stmt = $db->prepare("SELECT score FROM Users JOIN Scores on Users.id = Scores.user_id where Users.id = :sid order by Scores.created desc LIMIT 10");
-    $stmt->execute([":sid" => get_user_id()]);
-    $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
+$results = $stmt->fetchAll(PDO::FETCH_ASSOC);
 ?>
 <div class="results">
     <div>
@@ -179,7 +170,7 @@ $results = [];
     <?php endif; ?>
 </div>
 <nav aria-label="Scores">
-            <ul class="results1">
+            <ul class="pagination justify-content-center">
                 <li class="page-item <?php echo ($page-1) < 1?"disabled":"";?>">
                     <a class="page-link" href="?page=<?php echo $page-1;?>" tabindex="-1">Previous</a>
                 </li>
