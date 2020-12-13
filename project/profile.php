@@ -155,10 +155,10 @@ $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
     <div>
          <div>Score History</div>
     </div>
-    <?php if ($results && count($results) > 0): ?>
+    <?php if (count($results) > 0): ?>
         <div class="list-group">
 		<div>
-			<div>?php safer_echo($offset); ?></div>
+			<div>?php safer_echo("$offset"); ?></div>
 		</div>
             <?php foreach ($results as $r): ?>
                 <div class="list-group-item">
