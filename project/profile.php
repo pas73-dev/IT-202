@@ -128,7 +128,7 @@ if(isset($_GET["page"])){
 
     }
 }
-//$results = [];
+$results = [];
 $result = [];
 $db = getDB();
 $stmt = $db->prepare("SELECT count(*) as total from Scores e LEFT JOIN Users i on e.id = i.user_id where e.user_id = :id");
@@ -151,6 +151,7 @@ if($e[0] != "00000"){
 }
 $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
 ?>
+echo $offset;
 <div class="results">
     <div>
          <div>Score History</div>
