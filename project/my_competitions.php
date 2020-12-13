@@ -41,9 +41,35 @@ if (isset($_POST["join"])) {
         flash("Competition is unavailable", "warning");
     }
 }
-$stmt = $db->prepare("SELECT c.*, UC.user_id as reg FROM Competitions c LEFT JOIN (SELECT * FROM Association where user_id = :id) as UC on c.id = UC.comp_id WHERE c.expires > current_timestamp AND paid_out = 0 AND (UC.user_id = :id OR c.user_id = :id) ORDER BY expires ASC");
-$r = $stmt->execute([":id" => get_user_id(),]);
-if ($r) {
+//https://www.digitalocean.com/community/tutorials/how-to-implement-pagination-in-mysql-with-php-on-ubuntu-18-04
+$page = 1;
+$per_page = 10;
+if(isset($_GET["page"])){
+    try {
+        $page = (int)$_GET["page"];
+    }
+    catch(Exception $e){
+
+    }
+}
+$results = [];
+$result = [];
+$db = getDB();
+$stmt = $db->prepare("SELECT count(*) as total from Scores e LEFT JOIN Users i on e.id = i.user_id where e.user_id = :id");
+$stmt->execute([":id"=>get_user_id()]);
+$result = $stmt->fetch(PDO::FETCH_ASSOC);
+$total = 0;
+if($result){
+    $total = (int)$result["total"];
+}
+$total_pages = ceil($total / $per_page);
+$offset = ($page-1) * $per_page;
+$stmt = $db->prepare("SELECT c.*, UC.user_id as reg FROM Competitions c LEFT JOIN (SELECT * FROM Association where user_id = :id) as UC on c.id = UC.comp_id WHERE c.expires > current_timestamp AND paid_out = 0 AND (UC.user_id = :id OR c.user_id = :id) ORDER BY expires ASC LIMIT :offset, :count");
+$stmt->bindValue(":offset", $offset, PDO::PARAM_INT);
+$stmt->bindValue(":count", $per_page, PDO::PARAM_INT);
+$stmt->bindValue(":id", get_user_id());
+$e = $stmt->execute();
+if ($e) {
     $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
 }
 else {
