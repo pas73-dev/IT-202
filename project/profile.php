@@ -155,7 +155,7 @@ $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
     <div>
          <div>Score History</div>
     </div>
-    <?php if (count($results) > 0): ?>
+    <?php if ($results && count($results) > 0): ?>
         <div class="list-group">
             <?php foreach ($results as $r): ?>
                 <div class="list-group-item">
