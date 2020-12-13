@@ -151,13 +151,15 @@ if($e[0] != "00000"){
 }
 $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
 ?>
-echo $offset;
 <div class="results">
     <div>
          <div>Score History</div>
     </div>
     <?php if ($results && count($results) > 0): ?>
         <div class="list-group">
+		<div>
+			<div>?php safer_echo($offset); ?></div>
+		</div>
             <?php foreach ($results as $r): ?>
                 <div class="list-group-item">
                     <div>
