@@ -82,7 +82,7 @@ $Lresults = [];
             <?php foreach ($Lresults as $l): ?>
                 <div class="list-group-item">
                     <div>
-			<div><a href="profile.php?id="><?php safer_echo($l["name"]); ?></a> &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp; <?php safer_echo($l["score"]);?> &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp; <?php safer_echo($l["date"]); ?></div>
+			<div><a href="profile.php?id=<?php echo $l["user_id"];?>"><?php safer_echo($l["name"]); ?></a> &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp; <?php safer_echo($l["score"]);?> &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp; <?php safer_echo($l["date"]); ?></div>
                     </div>
                 </div>
             <?php endforeach; ?>
