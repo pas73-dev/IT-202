@@ -5,7 +5,7 @@ $email = "";
 if (isset($_SESSION["user"]) && isset($_SESSION["user"]["email"])) {
     $email = $_SESSION["user"]["email"];
 }
-
+<li> <a href="pong.php">Game</a></li>
 ?>
     <p>Welcome, <?php echo $email; ?></p>
 <?php
