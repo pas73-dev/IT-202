@@ -19,6 +19,7 @@ $Wresults = [];
     <div>
          <div>Last Week Top 10 Score</div>
 	 <div>Name &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp Score &nbsp&nbsp Date</div>
+	 <div> < a href="pong.php"></a></div>
     </div>
     <?php if (count($Wresults) > 0): ?>
         <div class="list-group">
