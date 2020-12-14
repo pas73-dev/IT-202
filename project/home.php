@@ -5,6 +5,7 @@ $email = "";
 if (isset($_SESSION["user"]) && isset($_SESSION["user"]["email"])) {
     $email = $_SESSION["user"]["email"];
 }
+
 ?>
     <p>Welcome, <?php echo $email; ?></p>
 <?php
@@ -19,7 +20,7 @@ $Wresults = [];
     <div>
          <div>Last Week Top 10 Score</div>
 	 <div>Name &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp Score &nbsp&nbsp Date</div>
-	 <div> < a href="pong.php"></a></div>
+	 <li> <a href="pong.php"></a></li>
     </div>
     <?php if (count($Wresults) > 0): ?>
         <div class="list-group">
