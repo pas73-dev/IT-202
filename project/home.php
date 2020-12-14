@@ -11,7 +11,7 @@ if (isset($_SESSION["user"]) && isset($_SESSION["user"]["email"])) {
 //this gets Weekly score from the database from all users with a score
 $Wresults = [];
     $db = getDB();
-    $stmt = $db->prepare("SELECT Users.username as name, Scores.created as date, Scores.score as  score FROM Users JOIN Scores on Users.id = Scores.user_id where YEARWEEK(Scores.created) = (YEARWEEK(NOW()) -1) order by Scores.score desc, Scores.created asc LIMIT 10");
+    $stmt = $db->prepare("SELECT Users.username as name, Scores.created as date, Scores.score as score, Scores.user_id as uid FROM Users JOIN Scores on Users.id = Scores.user_id where YEARWEEK(Scores.created) = (YEARWEEK(NOW()) -1) order by Scores.score desc, Scores.created asc LIMIT 10");
     $stmt->execute([]);
     $Wresults = $stmt->fetchAll(PDO::FETCH_ASSOC);
 ?>
@@ -26,7 +26,7 @@ $Wresults = [];
             <?php foreach ($Wresults as $w): ?>
                 <div class="list-group-item">
                     <div>
-			<div> <a href="profile.php?id=<?php echo $w["user_id"];?>"><?php safer_echo($w["name"]); ?> </a> &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp; <?php safer_echo($w["score"]);?> &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp; <?php safer_echo($w["date"]); ?></div>
+			<div> <a href="profile.php?id=<?php echo $w["uid"];?>"><?php safer_echo($w["name"]); ?> </a> &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp; <?php safer_echo($w["score"]);?> &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp; <?php safer_echo($w["date"]); ?></div>
                     </div>
                 </div>
             <?php endforeach; ?>
@@ -40,7 +40,7 @@ $Wresults = [];
 //this gets monthly score
 $Mresults = [];
     $db = getDB();
-    $stmt = $db->prepare("SELECT Users.username as name, Scores.created as date, Scores.score as score FROM Users JOIN Scores on Users.id = Scores.user_id where DATE_FORMAT(Scores.created, '%Y%m') = (DATE_FORMAT(NOW(), '%Y%m') - 1) order by Scores.score desc, Scores.created asc LIMIT 10");
+    $stmt = $db->prepare("SELECT Users.username as name, Scores.created as date, Scores.score as score, Scores.user_id as uid FROM Users JOIN Scores on Users.id = Scores.user_id where DATE_FORMAT(Scores.created, '%Y%m') = (DATE_FORMAT(NOW(), '%Y%m') - 1) order by Scores.score desc, Scores.created asc LIMIT 10");
     $stmt->execute([]);
     $Mresults = $stmt->fetchAll(PDO::FETCH_ASSOC);
 ?>
@@ -54,7 +54,7 @@ $Mresults = [];
             <?php foreach ($Mresults as $m): ?>
                 <div class="list-group-item">
                     <div>
-			<div> <a href="profile.php?id=<?php echo $m["id"];?>"><?php safer_echo($m["name"]); ?> </a> &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp; <?php safer_echo($m["score"]);?> &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp; <?php safer_echo($m["date"]); ?></div>
+			<div> <a href="profile.php?id=<?php echo $m["uid"];?>"><?php safer_echo($m["name"]); ?> </a> &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp; <?php safer_echo($m["score"]);?> &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp; <?php safer_echo($m["date"]); ?></div>
                     </div>
                 </div>
             <?php endforeach; ?>
@@ -68,7 +68,7 @@ $Mresults = [];
 //this gets lifetime score
 $Lresults = [];
     $db = getDB();
-    $stmt = $db->prepare("SELECT Users.username as name, Scores.created as date, Scores.score as score FROM Users JOIN Scores on Users.id = Scores.user_id order by Scores.score desc, Scores.created asc LIMIT 10");
+    $stmt = $db->prepare("SELECT Users.username as name, Scores.created as date, Scores.score as score, Scores.user_id as uid FROM Users JOIN Scores on Users.id = Scores.user_id order by Scores.score desc, Scores.created asc LIMIT 10");
     $stmt->execute([]);
     $Lresults = $stmt->fetchAll(PDO::FETCH_ASSOC);
 ?>
@@ -82,7 +82,7 @@ $Lresults = [];
             <?php foreach ($Lresults as $l): ?>
                 <div class="list-group-item">
                     <div>
-			<div><a href="profile.php?id=<?php echo $l["user_id"];?>"><?php safer_echo($l["name"]); ?></a> &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp; <?php safer_echo($l["score"]);?> &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp; <?php safer_echo($l["date"]); ?></div>
+			<div><a href="profile.php?id=<?php echo $l["uid"];?>"><?php safer_echo($l["name"]); ?></a> &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp; <?php safer_echo($l["score"]);?> &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp; <?php safer_echo($l["date"]); ?></div>
                     </div>
                 </div>
             <?php endforeach; ?>
