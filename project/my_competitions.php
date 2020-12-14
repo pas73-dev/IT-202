@@ -89,8 +89,8 @@ else {
                     <div class="list-group-item">
                         <div class="row">
                             <div class="col">
-                                <?php safer_echo($r["name"]); ?>
-                                <?php if ($r["user_id"] == get_user_id()): ?>
+                                <a href="profile.php?id=<?php echo $r["reg"];?>"><?php safer_echo($r["name"]); ?></a>
+                                <?php if ($r["reg"] == get_user_id()): ?>
                                     (Created)
                                 <?php endif; ?>
                             </div>
