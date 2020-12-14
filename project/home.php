@@ -54,7 +54,7 @@ $Mresults = [];
             <?php foreach ($Mresults as $m): ?>
                 <div class="list-group-item">
                     <div>
-			<div> <a href="profile.php?id=<?php echo $w["user_id"];?>"><?php safer_echo($m["name"]); ?> </a> &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp; <?php safer_echo($m["score"]);?> &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp; <?php safer_echo($m["date"]); ?></div>
+			<div> <a href="profile.php?id=<?php echo $w["Scores.user_id"];?>"><?php safer_echo($m["name"]); ?> </a> &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp; <?php safer_echo($m["score"]);?> &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp; <?php safer_echo($m["date"]); ?></div>
                     </div>
                 </div>
             <?php endforeach; ?>
