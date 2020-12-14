@@ -150,7 +150,29 @@ if($e[0] != "00000"){
     flash(var_export($e, true), "alert");
 }
 $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
+/*
+$id = get_user_id;
+if(isset($_GET["id"])){
+	$id = $_GET["id"];
+}
+$query = "SELECT username,email,points,, vis FROM Users where id = :id";
+$stmt = $db->prepare($query);
+$stmt->excute([":id"=>$id]);
+$results1 = $stmt->fetch();
+$profData = [];
+$isViewed = false;
+if($results1["vis"] == 1 or $id == get_user_id(){
+	$profData = $results1;
+}
+else{
+	die(header("Location: getout.php"));
+}
+foreach($profData as $record):
+	if(!$isViewed):
+		<input type="password" hidden/>
+endif;*/
 ?>
+
 <div class="results">
     <div>
          <div>Score History</div>
