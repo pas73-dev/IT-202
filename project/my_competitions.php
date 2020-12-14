@@ -89,7 +89,7 @@ else {
                     <div class="list-group-item">
                         <div class="row">
                             <div class="col">
-                                <?php safer_echo($r["name"]); ?>
+                                <a href="profile.php?id=<?php echo $w["user_id"];?>"><?php safer_echo($r["name"]); ?></a>
                                 <?php if ($r["user_id"] == get_user_id()): ?>
                                     (Created)
                                 <?php endif; ?>
